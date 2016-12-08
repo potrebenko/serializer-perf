@@ -9,7 +9,7 @@ namespace Serializers
     [RankColumn]
     [OrderProvider(SummaryOrderPolicy.FastestToSlowest)]
     [Config(typeof(TestConfig))]
-    public class SerializatorsBenchmark<T>
+    public class Benchmark<T>
     {
         private T _data;
         private string _jsonSerialized;

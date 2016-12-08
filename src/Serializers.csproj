@@ -224,7 +224,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BigDataSerializer.cs" />
+    <Compile Include="Proxies.cs" />
     <Compile Include="Models\BigData.cs" />
     <Compile Include="Models\TinyArray.cs" />
     <Compile Include="Models\TinyValueData.cs" />
@@ -233,7 +233,7 @@
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerializatorsBenchmark.cs" />
+    <Compile Include="Benchmark.cs" />
     <Compile Include="MixedSerializer.cs" />
     <Compile Include="Tests\SerializerDataTests.cs" />
   </ItemGroup>

@@ -24,6 +24,11 @@ namespace Serializers
             _wireSerializer = new Wire.Serializer();
         }
 
+        /// <summary>
+        /// https://github.com/msgpack/msgpack-cli
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="o"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Pack(Stream s, T o)
         {
@@ -36,6 +41,11 @@ namespace Serializers
             return _mgsPackSerializer.Unpack(input);
         }
 
+        /// <summary>
+        /// https://github.com/mgravell/protobuf-net
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ProtoSerialize(Stream s, T data)
         {
@@ -48,6 +58,11 @@ namespace Serializers
             return ProtoSerializer.Deserialize<T>(s);
         }
 
+        /// <summary>
+        /// https://github.com/JamesNK/Newtonsoft.Json
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string JsonNetSerialize(T data)
         {
@@ -60,6 +75,11 @@ namespace Serializers
             return JsonConvert.DeserializeObject<T>(input);
         }
 
+        /// <summary>
+        /// https://github.com/kevin-montrose/Jil
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string JilSerialize(T data)
         {
@@ -72,6 +92,11 @@ namespace Serializers
             return JSON.Deserialize<T>(input);
         }
 
+        /// <summary>
+        /// https://github.com/homuroll/GroBuf
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public byte[] GroBufSerialize(T data)
         {
@@ -84,6 +109,11 @@ namespace Serializers
             return _groBuf.Deserialize<T>(input);
         }
 
+        /// <summary>
+        /// https://github.com/mgholam/fastJSON
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string FastJsonSerialize(T data)
         {
@@ -96,6 +126,11 @@ namespace Serializers
             return fastJSON.JSON.ToObject<T>(input);
         }
 
+        /// <summary>
+        /// https://github.com/ServiceStack/ServiceStack.Text
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string ServiceStackJsonSerializer(T data)
         {
