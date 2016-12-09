@@ -11,6 +11,6 @@ namespace Serializers.Models
         public string Id { get; set; }
 
         [ProtoMember(2)]
-        public DateTime Time { get; set; }
+        public long Time { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.Options;
 using ProtoBuf;
 
 namespace Serializers.Models
@@ -24,6 +26,7 @@ namespace Serializers.Models
         public List<Transactions> Transactions { get; set; }
 
         [ProtoMember(6)]
+        [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<int, Transactions> Dict { get; set; }
     }
 }

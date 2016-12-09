@@ -61,7 +61,7 @@ namespace Serializers.Tests
         }
 
         [Test, AutoData]
-        public void JIL_Deserialize_ObjectEquals(MixedSerializer<TinyData> serializer, TinyData data)
+        public void JIL_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
         {
             //Arrange
             var serialized = JSON.Serialize(data);
@@ -87,7 +87,7 @@ namespace Serializers.Tests
         }
 
         [Test, AutoData]
-        public void FastJson_Deserialize_ObjectEquals(MixedSerializer<TinyData> serializer, TinyData data)
+        public void FastJson_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
         {
             //Arrange
             var serialized = serializer.FastJsonSerialize(data);
@@ -100,7 +100,7 @@ namespace Serializers.Tests
         }
 
         [Test, AutoData]
-        public void ServiceStackJson_Deserialize_ObjectEquals(MixedSerializer<TinyData> serializer, TinyData data)
+        public void ServiceStackJson_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
         {
             //Arrange
             var serialized = serializer.ServiceStackJsonSerializer(data);
@@ -136,6 +136,19 @@ namespace Serializers.Tests
 
             //Act
             var result = serializer.FsPicklerBinaryDeserialize(s.ToArray());
+
+            //Assert
+            Assert.That(result, Is.DeepEqualTo(data));
+        }
+
+        [Test, AutoData]
+        public void Bson_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
+        {
+            //Arrange
+            var serialized = serializer.BsonSerialize(data);
+
+            //Act
+            var result = serializer.BsonDeserialize(serialized);
 
             //Assert
             Assert.That(result, Is.DeepEqualTo(data));

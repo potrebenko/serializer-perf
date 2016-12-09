@@ -22,6 +22,7 @@ namespace Serializers
         private string _fastJsonSerialized;
         private string _serviceStackJsonSerialized;
         private byte[] _fsPicklerSerialized;
+        private byte[] _bsonSerialized;
 
         private MixedSerializer<T> _serializer;
 
@@ -69,6 +70,9 @@ namespace Serializers
                 _serializer.FsPicklerBinarySerialize(m, _data);
                 _fsPicklerSerialized = m.ToArray();
             }
+
+            // Bson
+            _bsonSerialized = _serializer.BsonSerialize(_data);
         }
 
         #region JsonNet
@@ -216,6 +220,22 @@ namespace Serializers
         public T FsPicklerBinaryDeserialize()
         {
             return _serializer.FsPicklerBinaryDeserialize(_fsPicklerSerialized);
+        }
+
+        #endregion
+
+        #region Bson
+
+        [Benchmark]
+        public byte[] BsonSerialize()
+        {
+            return _serializer.BsonSerialize(_data);
+        }
+
+        [Benchmark]
+        public T BsonDeserialize()
+        {
+            return _serializer.BsonDeserialize(_bsonSerialized);
         }
 
         #endregion

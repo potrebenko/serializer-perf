@@ -4,7 +4,10 @@ using GroBuf;
 using GroBuf.DataMembersExtracters;
 using Jil;
 using MBrace.FsPickler;
+using MBrace.FsPickler.Combinators;
 using Microsoft.FSharp.Core;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MsgPack.Serialization;
 using Newtonsoft.Json;
 using ServiceStack;
@@ -180,6 +183,18 @@ namespace Serializers
         {
             var m = new MemoryStream(input);
             return _fsPicklerBinary.Deserialize<T>(m);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public byte[] BsonSerialize(T data)
+        {
+            return data.ToBson();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T BsonDeserialize(byte[] input)
+        {
+            return BsonSerializer.Deserialize<T>(input);
         }
     }
 }
