@@ -12,16 +12,18 @@ namespace Serializers
     public class Benchmark<T>
     {
         private T _data;
+
         private string _jsonSerialized;
         private string _jilSerialized;
         private MemoryStream _msgPackStream;
         private MemoryStream _protoStream;
         private MemoryStream _wireStream;
-
-        private MixedSerializer<T> _serializer;
         private byte[] _groBufSerialized;
         private string _fastJsonSerialized;
         private string _serviceStackJsonSerialized;
+        private byte[] _fsPicklerSerialized;
+
+        private MixedSerializer<T> _serializer;
 
         [Setup]
         public void Init()
@@ -56,10 +58,17 @@ namespace Serializers
             // ServiceStack
             _serviceStackJsonSerialized = _serializer.ServiceStackJsonSerializer(_data);
 
-            //Wire
+            // Wire
             _wireStream = new MemoryStream();
             _serializer.WireSerialize(_wireStream, _data);
             _wireStream.Position = 0;
+
+            // FsPickler
+            using (var m = new MemoryStream())
+            {
+                _serializer.FsPicklerBinarySerialize(m, _data);
+                _fsPicklerSerialized = m.ToArray();
+            }
         }
 
         #region JsonNet
@@ -192,5 +201,23 @@ namespace Serializers
 
         #endregion
 
+        #region FsPickler
+
+        [Benchmark]
+        public void FsPicklerBinarySerialize()
+        {
+            using (var m = new MemoryStream())
+            {
+                _serializer.FsPicklerBinarySerialize(m, _data);
+            }
+        }
+
+        [Benchmark]
+        public T FsPicklerBinaryDeserialize()
+        {
+            return _serializer.FsPicklerBinaryDeserialize(_fsPicklerSerialized);
+        }
+
+        #endregion
     }
 }

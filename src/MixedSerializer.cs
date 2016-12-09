@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using GroBuf;
 using GroBuf.DataMembersExtracters;
 using Jil;
+using MBrace.FsPickler;
+using Microsoft.FSharp.Core;
 using MsgPack.Serialization;
 using Newtonsoft.Json;
 using ServiceStack;
@@ -16,12 +18,14 @@ namespace Serializers
         private readonly MessagePackSerializer<T> _mgsPackSerializer;
         private readonly ISerializer _groBuf;
         private readonly Wire.Serializer _wireSerializer;
+        private BinarySerializer _fsPicklerBinary;
 
         public MixedSerializer()
         {
             _mgsPackSerializer = SerializationContext.Default.GetSerializer<T>();
             _groBuf = new GroBuf.Serializer(new PropertiesExtractor(), options: GroBufOptions.WriteEmptyObjects);
             _wireSerializer = new Wire.Serializer();
+            _fsPicklerBinary = FsPickler.CreateBinarySerializer();
         }
 
         /// <summary>
@@ -158,6 +162,24 @@ namespace Serializers
         public T WireDeserialize(Stream input)
         {
             return _wireSerializer.Deserialize<T>(input);
+        }
+
+        /// <summary>
+        /// https://github.com/mbraceproject/FsPickler
+        /// </summary>
+        /// <param name="s">Stream</param>
+        /// <param name="data">Input data</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FsPicklerBinarySerialize(Stream s, T data)
+        {
+            _fsPicklerBinary.Serialize(s, data);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T FsPicklerBinaryDeserialize(byte[] input)
+        {
+            var m = new MemoryStream(input);
+            return _fsPicklerBinary.Deserialize<T>(m);
         }
     }
 }

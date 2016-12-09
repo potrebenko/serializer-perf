@@ -1,7 +1,9 @@
-﻿using ProtoBuf;
+﻿using System;
+using ProtoBuf;
 
 namespace Serializers.Models
 {
+    [Serializable]
     [ProtoContract]
     public class TinyArray
     {

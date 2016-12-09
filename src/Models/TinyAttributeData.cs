@@ -1,10 +1,12 @@
-﻿using GroBuf.DataMembersExtracters;
+﻿using System;
+using GroBuf.DataMembersExtracters;
 using Jil;
 using Newtonsoft.Json;
 using ProtoBuf;
 
 namespace Serializers.Models
 {
+    [Serializable]
     [ProtoContract]
     [JsonObject]
     public class TinyAttributeData

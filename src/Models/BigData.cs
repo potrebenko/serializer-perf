@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ProtoBuf;
 
 namespace Serializers.Models
 {
+    [Serializable]
     [ProtoContract]
     public class BigData
     {

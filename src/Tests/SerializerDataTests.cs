@@ -126,5 +126,19 @@ namespace Serializers.Tests
             //Assert
             Assert.That(result, Is.DeepEqualTo(data));
         }
+
+        [Test, AutoData]
+        public void FsPicklerBinary_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
+        {
+            //Arrange
+            var s = new MemoryStream();
+            serializer.FsPicklerBinarySerialize(s, data);
+
+            //Act
+            var result = serializer.FsPicklerBinaryDeserialize(s.ToArray());
+
+            //Assert
+            Assert.That(result, Is.DeepEqualTo(data));
+        }
     }
 }

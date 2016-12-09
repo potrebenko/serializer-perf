@@ -3,6 +3,7 @@ using ProtoBuf;
 
 namespace Serializers.Models
 {
+    [Serializable]
     [ProtoContract]
     public class Transactions
     {
