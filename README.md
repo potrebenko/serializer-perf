@@ -1,5 +1,6 @@
 # serializer-perf
 Performance tests for the most popular serializers.
+Binary, Json, Bson.
 
 1. [protobuf-net](https://github.com/mgravell/protobuf-net)
 2. [msgpack-cli](https://github.com/msgpack/msgpack-cli)
@@ -9,3 +10,5 @@ Performance tests for the most popular serializers.
 6. [FastJson](https://github.com/mgholam/fastJSON)
 7. [ServiceStack.Text](https://github.com/ServiceStack/ServiceStack.Text)
 8. [Wire](https://github.com/rogeralsing/Wire)
+9. [FsPickler](https://github.com/mbraceproject/FsPickler)
+10. [MongoDb Bson](http://mongodb.github.io/mongo-csharp-driver/)

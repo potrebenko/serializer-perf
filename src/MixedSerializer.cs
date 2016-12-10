@@ -185,6 +185,11 @@ namespace Serializers
             return _fsPicklerBinary.Deserialize<T>(m);
         }
 
+        /// <summary>
+        /// http://mongodb.github.io/mongo-csharp-driver/
+        /// </summary>
+        /// <param name="data">Input data</param>
+        /// <returns>Byte array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public byte[] BsonSerialize(T data)
         {
