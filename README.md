@@ -12,4 +12,4 @@ Binary, Json, Bson.
 8. [Wire](https://github.com/rogeralsing/Wire)
 9. [FsPickler](https://github.com/mbraceproject/FsPickler)
 10. [MongoDb Bson](http://mongodb.github.io/mongo-csharp-driver/)
-11. [Message shark](https://github.com/rpgmaker/MessageShark)
+11. [MessageShark](https://github.com/rpgmaker/MessageShark)
