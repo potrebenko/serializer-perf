@@ -11,20 +11,20 @@ namespace Serializers
     [Config(typeof(TestConfig))]
     public class Benchmark<T>
     {
-        private T _data;
+        private static T _data;
 
-        private string _jsonSerialized;
-        private string _jilSerialized;
-        private MemoryStream _msgPackStream;
-        private MemoryStream _protoStream;
-        private MemoryStream _wireStream;
-        private byte[] _groBufSerialized;
-        private string _fastJsonSerialized;
-        private string _serviceStackJsonSerialized;
-        private byte[] _fsPicklerSerialized;
-        private byte[] _bsonSerialized;
+        private static string _jsonSerialized;
+        private static string _jilSerialized;
+        private static MemoryStream _msgPackStream;
+        private static MemoryStream _protoStream;
+        private static MemoryStream _wireStream;
+        private static byte[] _groBufSerialized;
+        private static string _fastJsonSerialized;
+        private static string _serviceStackJsonSerialized;
+        private static byte[] _fsPicklerSerialized;
+        private static byte[] _bsonSerialized;
 
-        private MixedSerializer<T> _serializer;
+        private static MixedSerializer<T> _serializer;
 
         [Setup]
         public void Init()
@@ -77,17 +77,17 @@ namespace Serializers
 
         #region JsonNet
 
-        [Benchmark]
+        [Benchmark(Description = "Json .NET [S]")]
         public void JsonNetSerialize() => _serializer.JsonNetSerialize(_data);
 
-        [Benchmark]
+        [Benchmark(Description = "Json .NET [D]")]
         public void JsonNetDeserialize() => _serializer.JsonNetDeserialize(_jsonSerialized);
 
         #endregion
 
         #region Protobuf
 
-        [Benchmark]
+        [Benchmark(Description = "Protobuf [S]")]
         public void ProtobufSerialize()
         {
             using (var m = new MemoryStream())
@@ -96,7 +96,7 @@ namespace Serializers
             }
         }
 
-        [Benchmark]
+        [Benchmark(Description = "Protobuf [D]")]
         public T ProtobufDeserialize()
         {
             _protoStream.Position = 0;
@@ -107,7 +107,7 @@ namespace Serializers
 
         #region MiniMsgPack
 
-        [Benchmark]
+        [Benchmark(Description = "MsgPack [S]")]
         public void MsgPackCliSerialize()
         {
             using (var m = new MemoryStream())
@@ -116,7 +116,7 @@ namespace Serializers
             }
         }
 
-        [Benchmark]
+        [Benchmark(Description = "MsgPack [D]")]
         public T MsgPackCliDeserialize()
         {
             _msgPackStream.Position = 0;
@@ -127,13 +127,13 @@ namespace Serializers
 
         #region Jil
 
-        [Benchmark]
+        [Benchmark(Description = "Jil [S]")]
         public string JilSerialize()
         {
             return _serializer.JilSerialize(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "Jil [D]")]
         public T JilDeserialize()
         {
             return _serializer.JilDeserialize(_jilSerialized);
@@ -143,13 +143,13 @@ namespace Serializers
 
         #region GroBuf
 
-        [Benchmark(Baseline = true)]
+        [Benchmark(Baseline = true, Description = "GroBuf [S]")]
         public byte[] GroBufSerialize()
         {
             return _serializer.GroBufSerialize(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "GroBuf [D]")]
         public T GroBufDeserialize()
         {
             return _serializer.GroBufDeserialize(_groBufSerialized);
@@ -159,13 +159,13 @@ namespace Serializers
 
         #region FastJson
 
-        [Benchmark]
+        [Benchmark(Description = "FastJson [S]")]
         public string FastJsonSerialize()
         {
             return _serializer.FastJsonSerialize(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "FastJson [D]")]
         public T FastJsonDeserialize()
         {
             return _serializer.FastJsonDeserialize(_fastJsonSerialized);
@@ -175,13 +175,13 @@ namespace Serializers
 
         #region ServiceStackJson
 
-        [Benchmark]
+        [Benchmark(Description = "ServiceStack [S]")]
         public string ServiceStackJsonSerialize()
         {
             return _serializer.ServiceStackJsonSerializer(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "ServiceStack [D]")]
         public T ServiceStackJsonDeserialize()
         {
             return _serializer.ServiceStackJsonDeserializer(_serviceStackJsonSerialized);
@@ -191,13 +191,13 @@ namespace Serializers
 
         #region Wire
 
-        [Benchmark]
+        [Benchmark(Description = "Wire [S]")]
         public string WireSerialize()
         {
             return _serializer.ServiceStackJsonSerializer(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "Wire [D]")]
         public T WireDeserialize()
         {
             return _serializer.ServiceStackJsonDeserializer(_serviceStackJsonSerialized);
@@ -207,7 +207,7 @@ namespace Serializers
 
         #region FsPickler
 
-        [Benchmark]
+        [Benchmark(Description = "FsPickler [S]")]
         public void FsPicklerBinarySerialize()
         {
             using (var m = new MemoryStream())
@@ -216,7 +216,7 @@ namespace Serializers
             }
         }
 
-        [Benchmark]
+        [Benchmark(Description = "FsPickler [D]")]
         public T FsPicklerBinaryDeserialize()
         {
             return _serializer.FsPicklerBinaryDeserialize(_fsPicklerSerialized);
@@ -226,13 +226,13 @@ namespace Serializers
 
         #region Bson
 
-        [Benchmark]
+        [Benchmark(Description = "Bson [S]")]
         public byte[] BsonSerialize()
         {
             return _serializer.BsonSerialize(_data);
         }
 
-        [Benchmark]
+        [Benchmark(Description = "Bson [D]")]
         public T BsonDeserialize()
         {
             return _serializer.BsonDeserialize(_bsonSerialized);
