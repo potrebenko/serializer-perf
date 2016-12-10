@@ -5,6 +5,7 @@ using GroBuf.DataMembersExtracters;
 using Jil;
 using MBrace.FsPickler;
 using MBrace.FsPickler.Combinators;
+using MessageShark;
 using Microsoft.FSharp.Core;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -201,5 +202,22 @@ namespace Serializers
         {
             return BsonSerializer.Deserialize<T>(input);
         }
+
+        /// <summary>
+        /// https://github.com/rpgmaker/MessageShark
+        /// </summary>
+        /// <param name="data">Input data</param>
+        /// <returns>Byte array</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public byte[] MessageSharkSerialize(T data)
+        {
+            return MessageSharkSerializer.Serialize(data);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T MessageSharkDeserialize(byte[] input)
+        {
+            return MessageSharkSerializer.Deserialize<T>(input);
+        }	
     }
 }

@@ -153,5 +153,18 @@ namespace Serializers.Tests
             //Assert
             Assert.That(result, Is.DeepEqualTo(data));
         }
+
+        [Test, AutoData]
+        public void MessageShark_Deserialize_ObjectEquals(MixedSerializer<BigData> serializer, BigData data)
+        {
+            //Arrange
+            var serialized = serializer.MessageSharkSerialize(data);
+
+            //Act
+            var result = serializer.MessageSharkDeserialize(serialized);
+
+            //Assert
+            Assert.That(result, Is.DeepEqualTo(data));
+        }
     }
 }

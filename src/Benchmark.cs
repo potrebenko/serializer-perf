@@ -23,6 +23,7 @@ namespace Serializers
         private static string _serviceStackJsonSerialized;
         private static byte[] _fsPicklerSerialized;
         private static byte[] _bsonSerialized;
+        private byte[] _messageSharkSerialized;
 
         private static MixedSerializer<T> _serializer;
 
@@ -73,6 +74,9 @@ namespace Serializers
 
             // Bson
             _bsonSerialized = _serializer.BsonSerialize(_data);
+
+            // Message shark
+            _messageSharkSerialized = _serializer.MessageSharkSerialize(_data);
         }
 
         #region JsonNet
@@ -236,6 +240,22 @@ namespace Serializers
         public T BsonDeserialize()
         {
             return _serializer.BsonDeserialize(_bsonSerialized);
+        }
+
+        #endregion
+
+        #region Message shark
+
+        [Benchmark(Description = "Message shark [S]")]
+        public byte[] MessageSharkSerialize()
+        {
+            return _serializer.MessageSharkSerialize(_data);
+        }
+
+        [Benchmark(Description = "Message shark [D]")]
+        public T MessageSharkDeserialize()
+        {
+            return _serializer.MessageSharkDeserialize(_messageSharkSerialized);
         }
 
         #endregion
