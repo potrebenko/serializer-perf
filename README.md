@@ -15,7 +15,6 @@ Binary, Json, Bson.
 11. [Message shark](https://github.com/rpgmaker/MessageShark)
 
 
-
 ``` ini
 
 BenchmarkDotNet=v0.10.1, OS=Microsoft Windows NT 6.2.9200.0
