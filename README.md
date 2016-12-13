@@ -15,7 +15,7 @@ Binary, Json, Bson.
 11. [Message shark](https://github.com/rpgmaker/MessageShark)
 
 ---
-[Array](https://github.com/krezon/serializer-perf/src/Models/TinyArray.cs)
+[Array](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyArray.cs)
 
 ``` ini
 
@@ -53,7 +53,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
       'FastJson [D]' | 4,539.0560 ns | 45.3431 ns | 413.0953 ns | 4,453.7689 ns |  24.21 |   17 | 0.7637 |    1.7 kB |
 
 ---
-[Big data with a nested type](https://github.com/krezon/serializer-perf/src/Models/BigData.cs)
+[Big data with a nested type](https://github.com/krezon/serializer-perf/blob/master/src/Models/BigData.cs)
 
 ``` ini
 
@@ -91,7 +91,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
       'FastJson [D]' | 55.6011 us | 0.5513 us | 3.6154 us | 55.3876 us |  32.54 |   19 | 7.2545 |  16.68 kB |
 
 ---
-[Tiny data with attributes](https://github.com/krezon/serializer-perf/src/Models/TinyAttributeData.cs)
+[Tiny data with attributes](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyAttributeData.cs)
 
 ``` ini
 
@@ -129,7 +129,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
       'FastJson [D]' | 3,415.5154 ns | 36.3800 ns | 272.2429 ns | 3,320.5095 ns |  17.07 |   20 | 0.6863 |   1.53 kB |
 
 ---
-[Tiny data](https://github.com/krezon/serializer-perf/src/Models/TinyData.cs)
+[Tiny data](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyData.cs)
 
 ``` ini
 
@@ -167,7 +167,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
       'FastJson [D]' | 3,438.7611 ns | 38.3502 ns | 383.5022 ns | 3,323.6520 ns |  17.61 |   19 | 0.6752 |   1.51 kB |
 
 ---
-[Tiny value data](https://github.com/krezon/serializer-perf/src/Models/TinyValueData.cs)
+[Tiny value data](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyValueData.css)
 
 ``` ini
 
