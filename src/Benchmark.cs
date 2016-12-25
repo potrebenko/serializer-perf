@@ -11,6 +11,8 @@ namespace Serializers
     [Config(typeof(TestConfig))]
     public class Benchmark<T>
     {
+        [Params(10000)] private int _iterations;
+
         private static T _data;
 
         private static string _jsonSerialized;
@@ -82,21 +84,28 @@ namespace Serializers
         #region JsonNet
 
         [Benchmark(Description = "Json .NET [S]")]
-        public void JsonNetSerialize() => _serializer.JsonNetSerialize(_data);
+        public string JsonNetSerialize()
+        {
+            return _serializer.JsonNetSerialize(_data);
+        }
 
         [Benchmark(Description = "Json .NET [D]")]
-        public void JsonNetDeserialize() => _serializer.JsonNetDeserialize(_jsonSerialized);
+        public T JsonNetDeserialize()
+        {
+            return _serializer.JsonNetDeserialize(_jsonSerialized);
+        }
 
         #endregion
 
         #region Protobuf
 
         [Benchmark(Description = "Protobuf [S]")]
-        public void ProtobufSerialize()
+        public Stream ProtobufSerialize()
         {
             using (var m = new MemoryStream())
             {
                 _serializer.ProtoSerialize(m, _data);
+                return m;
             }
         }
 
@@ -112,11 +121,12 @@ namespace Serializers
         #region MiniMsgPack
 
         [Benchmark(Description = "MsgPack [S]")]
-        public void MsgPackCliSerialize()
+        public Stream MsgPackCliSerialize()
         {
             using (var m = new MemoryStream())
             {
                 _serializer.Pack(m, _data);
+                return m;
             }
         }
 
@@ -212,11 +222,12 @@ namespace Serializers
         #region FsPickler
 
         [Benchmark(Description = "FsPickler [S]")]
-        public void FsPicklerBinarySerialize()
+        public Stream FsPicklerBinarySerialize()
         {
             using (var m = new MemoryStream())
             {
                 _serializer.FsPicklerBinarySerialize(m, _data);
+                return m;
             }
         }
 

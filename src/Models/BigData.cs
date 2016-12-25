@@ -23,10 +23,10 @@ namespace Serializers.Models
         public double Price { get; set; }
 
         [ProtoMember(5)]
-        public List<Transactions> Transactions { get; set; }
+        public List<Transaction> Transactions { get; set; }
 
         [ProtoMember(6)]
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<int, Transactions> Dict { get; set; }
+        public Dictionary<int, Transaction> Dict { get; set; }
     }
 }

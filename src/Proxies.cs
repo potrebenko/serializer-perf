@@ -17,11 +17,6 @@ namespace Serializers
 
     }
 
-    public class TinyValueDataSerializer : Benchmark<TinyValueData>
-    {
-
-    }
-
     public class ArrayDataSerializer : Benchmark<TinyArray>
     {
         

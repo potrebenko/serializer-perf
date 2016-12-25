@@ -22,7 +22,7 @@ namespace Serializers
         private readonly MessagePackSerializer<T> _mgsPackSerializer;
         private readonly ISerializer _groBuf;
         private readonly Wire.Serializer _wireSerializer;
-        private BinarySerializer _fsPicklerBinary;
+        private readonly BinarySerializer _fsPicklerBinary;
 
         public MixedSerializer()
         {

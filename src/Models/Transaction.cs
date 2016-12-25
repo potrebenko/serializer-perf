@@ -5,7 +5,7 @@ namespace Serializers.Models
 {
     [Serializable]
     [ProtoContract]
-    public class Transactions
+    public class Transaction
     {
         [ProtoMember(1)]
         public string Id { get; set; }
