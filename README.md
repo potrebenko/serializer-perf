@@ -27,6 +27,8 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
 
 
 ```
+
+```
               Method |          Mean |     StdErr |      StdDev |        Median | Scaled | Rank |  Gen 0 | Allocated |
 -------------------- |-------------- |----------- |------------ |-------------- |------- |----- |------- |---------- |
         'GroBuf [S]' |   188.4655 ns |  1.9203 ns |  13.7133 ns |   185.8794 ns |   1.00 |    1 | 0.0663 |     144 B |
@@ -51,7 +53,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
      'Json .NET [S]' | 4,258.1643 ns | 44.1136 ns | 441.1360 ns | 4,226.3326 ns |  22.71 |   16 | 0.6170 |    1.4 kB |
       'FastJson [S]' | 4,529.5098 ns | 45.0440 ns | 420.1428 ns | 4,422.5279 ns |  24.15 |   17 | 1.0775 |    2.4 kB |
       'FastJson [D]' | 4,539.0560 ns | 45.3431 ns | 413.0953 ns | 4,453.7689 ns |  24.21 |   17 | 0.7637 |    1.7 kB |
-
+```
 ---
 [Big data with a nested type](https://github.com/krezon/serializer-perf/blob/master/src/Models/BigData.cs)
 
@@ -63,6 +65,8 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
   [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
   DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
 
+
+```
 
 ```
               Method |       Mean |    StdErr |    StdDev |     Median | Scaled | Rank |  Gen 0 | Allocated |
@@ -89,6 +93,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
           'Wire [D]' | 36.0764 us | 0.3505 us | 1.8874 us | 35.7882 us |  21.11 |   17 | 6.2008 |  13.75 kB |
           'Bson [D]' | 40.1003 us | 0.3985 us | 2.7319 us | 39.5553 us |  23.47 |   18 | 0.3590 |   7.04 kB |
       'FastJson [D]' | 55.6011 us | 0.5513 us | 3.6154 us | 55.3876 us |  32.54 |   19 | 7.2545 |  16.68 kB |
+```
 
 ---
 [Tiny data with attributes](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyAttributeData.cs)
@@ -101,6 +106,8 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
   [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
   DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
 
+
+```
 
 ```
               Method |          Mean |     StdErr |      StdDev |        Median | Scaled | Rank |  Gen 0 | Allocated |
@@ -127,6 +134,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
           'Bson [D]' | 1,904.8358 ns | 19.7368 ns | 169.7825 ns | 1,866.4976 ns |   9.52 |   18 | 0.2982 |     700 B |
       'FastJson [S]' | 2,152.8086 ns | 21.2944 ns |  95.2315 ns | 2,160.0079 ns |  10.76 |   19 | 1.0955 |   2.36 kB |
       'FastJson [D]' | 3,415.5154 ns | 36.3800 ns | 272.2429 ns | 3,320.5095 ns |  17.07 |   20 | 0.6863 |   1.53 kB |
+```
 
 ---
 [Tiny data](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyData.cs)
@@ -139,6 +147,8 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
   [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
   DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
 
+
+```
 
 ```
               Method |          Mean |     StdErr |      StdDev |        Median | Scaled | Rank |  Gen 0 | Allocated |
@@ -165,6 +175,7 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
      'Json .NET [D]' | 1,958.1008 ns | 23.6180 ns | 234.9957 ns | 1,907.8817 ns |  10.02 |   17 | 1.1928 |   2.53 kB |
       'FastJson [S]' | 2,097.6430 ns | 20.8151 ns | 177.8441 ns | 2,031.2483 ns |  10.74 |   18 | 1.0620 |   2.27 kB |
       'FastJson [D]' | 3,438.7611 ns | 38.3502 ns | 383.5022 ns | 3,323.6520 ns |  17.61 |   19 | 0.6752 |   1.51 kB |
+```
 
 ---
 [Tiny value data](https://github.com/krezon/serializer-perf/blob/master/src/Models/TinyValueData.css)
@@ -177,6 +188,8 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
   [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
   DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.6.1055.0
 
+
+```
 
 ```
               Method |          Mean |     StdErr |      StdDev |        Median | Scaled | Rank |  Gen 0 | Allocated |
@@ -203,3 +216,4 @@ Frequency=3579545 Hz, Resolution=279.3651 ns, Timer=ACPI
       'FastJson [S]' | 2,590.2210 ns | 25.8791 ns | 173.6021 ns | 2,568.3258 ns |  12.01 |   15 | 1.0247 |    2.2 kB |
      'Json .NET [D]' | 2,778.9912 ns | 50.3585 ns | 195.0375 ns | 2,721.8970 ns |  12.89 |   16 | 1.1832 |   2.55 kB |
       'FastJson [D]' | 4,331.4588 ns | 33.8073 ns | 130.9353 ns | 4,293.8620 ns |  20.09 |   17 | 0.6755 |   1.57 kB |
+```
